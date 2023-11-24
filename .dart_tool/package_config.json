@@ -68,6 +68,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "intl",
+      "rootUri": "file:///Users/leona/.pub-cache/hosted/pub.dev/intl-0.18.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///Users/leona/.pub-cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
@@ -176,7 +182,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-23T22:12:43.850020Z",
+  "generated": "2023-11-24T21:12:10.632255Z",
   "generator": "pub",
   "generatorVersion": "3.1.5"
 }
