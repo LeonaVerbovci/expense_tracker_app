@@ -3,13 +3,32 @@ import 'package:flutter/material.dart';
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromRGBO(106, 132, 111, 0),
-  //106, 132, 111
+);
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: const Color.fromARGB(255, 5, 99, 125),
 );
 
 void main() {
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    darkTheme: ThemeData.dark().copyWith(
+      colorScheme: kDarkColorScheme,
+      cardTheme: const CardTheme().copyWith(
+        color: kDarkColorScheme.secondaryContainer,
+        margin: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 10,
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: kDarkColorScheme.primaryContainer,
+          foregroundColor: kDarkColorScheme.onPrimaryContainer,
+        ),
+      ),
+    ),
     theme: ThemeData().copyWith(
-        useMaterial3: true,
         colorScheme: kColorScheme,
         appBarTheme: const AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onSecondaryContainer,
@@ -28,11 +47,12 @@ void main() {
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
-                titleLarge: TextStyle(
-              fontWeight: FontWeight.normal,
-              color: kColorScheme.primaryContainer,
-              fontSize: 20,
+                titleLarge: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 18,
             ))),
+    themeMode: ThemeMode.dark,
     home: const Expenses(),
   ));
 }

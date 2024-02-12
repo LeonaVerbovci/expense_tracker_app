@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/model/expense_model.dart';
+import 'package:expense_tracker_app/model/expense.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseItem extends StatelessWidget {
@@ -15,8 +15,9 @@ class ExpenseItem extends StatelessWidget {
           vertical: 16,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(expense.title),
+            Text(expense.title, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 5),
             Row(
               children: [
