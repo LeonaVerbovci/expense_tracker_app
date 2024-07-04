@@ -52,7 +52,7 @@ void main() {
               color: Colors.black,
               fontSize: 18,
             ))),
-    themeMode: ThemeMode.dark,
+    themeMode: ThemeMode.light,
     home: const Expenses(),
   ));
 }

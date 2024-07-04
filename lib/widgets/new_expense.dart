@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:expense_tracker_app/model/expense.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
@@ -30,6 +33,41 @@ class _NewExpenseState extends State<NewExpense> {
     });
   }
 
+  void _showDialog() {
+    if (Platform.isIOS) {
+      showCupertinoDialog(
+          context: context,
+          builder: (ctx) => CupertinoAlertDialog(
+                  title: const Text('Invalid Input'),
+                  content: const Text(
+                      'Please make sure a valid title, amount, date and category was entered'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(ctx);
+                      },
+                      child: const Text('Okay'),
+                    )
+                  ]));
+    } else {
+      showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+                title: const Text('Invalid Input'),
+                content: const Text(
+                    'Please make sure a valid title, amount, date and category was entered'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(ctx);
+                    },
+                    child: const Text('Okay'),
+                  )
+                ],
+              ));
+    }
+  }
+
   void _submitExpenseData() {
     final enteredAmount = double.tryParse(_amountController.text);
     //tryParse takes a string as an input and then returns a double if it is able to convert that string to a number else returns null
@@ -39,22 +77,7 @@ class _NewExpenseState extends State<NewExpense> {
         _selectedDate ==
             null) // trim - removes excess white space // will be true is we have an empty title or just a bunch of blanks
     {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: const Text('Invalid Input'),
-          content: const Text(
-              'Please make sure a valid title, amount, date and category was entered'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(ctx);
-              },
-              child: const Text('Okay'),
-            )
-          ],
-        ),
-      );
+      _showDialog();
       return;
     }
     widget.onAddExpense(
